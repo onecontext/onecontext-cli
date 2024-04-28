@@ -1,0 +1,94 @@
+index:
+
+  name: basic_index
+
+  steps:
+
+    - step: 
+      name: input
+      step_args: {} 
+      depends_on: []
+
+    - step: Chunker
+      name: simple_chunker
+      step_args:
+        chunk_size_words: 320
+        chunk_overlap: 30
+        split_by: word
+        split_respect_sentence_boundary: true
+        hard_split_max_chars: 2400
+      depends_on: [input]
+
+    - step: SentenceTransformerEmbedder
+      name: sentence-transformers
+      step_args:
+        model_name: BAAI/bge-base-en-v1.5
+        include_metadata: [ title, file_name ]
+      depends_on: [ simple_chunker ]
+
+    - step: LexRank
+      name: lexranker_file
+      step_args:
+        scope: file
+      depends_on: [ sentence-transformers ]
+
+    - step: LouvainCommunityDetection
+      name: louvain
+      step_args:
+        assign_labels: gpt-3.5-turbo # RateLimit later
+      depends_on: [ lexranker_file ]
+
+    - step: ChunkWriter
+      name: save
+      step_args:
+        duplicates: ovewrite
+      depends_on: [louvain]
+
+query:
+
+  name: basic_query
+
+  steps:
+    - step: OCRetriever
+      name: retriever
+      step_args:
+        query: tell me about language models 
+        model_name: BAAI/bge-base-en-v1.5
+        top_k: 50 
+        metadata_filters: { }
+      depends_on: [ ]
+      
+    - step: LexRank
+      name: lexranker_demo
+      step_args:
+      depends_on: [ retriever ]
+
+    - step: LouvainCommunityDetection
+      name: louvain_demo
+      step_args:
+      depends_on: [ lexranker_demo ]
+
+    - step: FilterInMemory
+      name: demo_filter
+      step_args:
+        key: lexranker_demo.percentile_score
+        comparator: $gt
+        value: $EXTRACT_PERCENTAGE
+      depends_on: [ louvain_demo ]
+
+    - step: OCReranker
+      name: oc_reranker_test
+      step_args:
+        query: tell me about language models 
+        model_name: BAAI/bge-reranker-base
+        top_k: 10
+      depends_on: [ demo_filter ]
+
+
+
+
+
+
+
+
+
