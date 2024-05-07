@@ -82,7 +82,7 @@ const CheckPipelineRun = ({options}: Props) => {
 									<Text>
 										<Newline/>
 										<Newline/>
-										<Text bold color={"cyan"}>Steps: </Text>
+										<Text bold color={"#66FFFF"}>Steps: </Text>
 										{
 											run.steps && Object.entries(run.steps).map((key0: any) => {
 												// return the key and the value
