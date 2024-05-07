@@ -3,8 +3,8 @@ steps:
   - step: KnowledgeBaseFiles
     name: input
     step_args:
-      knowledgebase_names: ["demo_kb"]
-      vector_index_name: demo_vi
+      knowledgebase_names: ["rm_kb"]
+      vector_index_name: rm_vi
     depends_on: []
 
   - step: Chunker
@@ -40,5 +40,5 @@ steps:
     name: save
     step_args:
 #      duplicates: overwrite on file_name
-      vector_index_name: demo_vi
+      vector_index_name: rm_vi
     depends_on: [louvain]

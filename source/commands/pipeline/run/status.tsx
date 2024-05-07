@@ -12,7 +12,15 @@ const {API_KEY, BASE_URL} = Credentials;
 export const options = zod.object({
 	BASE_URL: zod.string().default(BASE_URL),
 	API_KEY: zod.string().default(API_KEY),
-	runid: z.string().describe('Run ID of the pipeline to get status for'),
+	skip: z.number().default(0),
+	limit: z.number().default(10),
+	sort: z.string().default("date_created"),
+	dateCreatedGte: z.date().default(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)),
+	dateCreatedLte: z.date().default(new Date()),
+	runid: z.string().refine((val) => val.trim() !== '', {message: "Run id cannot be empty"}),
+	status: z.string().optional(),
+	showConfig: z.boolean().default(false),
+	showSteps: z.boolean().default(false),
 })
 
 type Props = { options: zod.infer<typeof options> };
@@ -24,8 +32,9 @@ const CheckPipelineRun = ({options}: Props) => {
 	useEffect(() => {
 		const interval = setInterval(() => {
 			try {
-				OneContext.getRunResults({ BASE_URL: options.BASE_URL, API_KEY: options.API_KEY, runID: options.runid })
+				OneContext.getRunResults(options)
 					.then(res => {
+						console.log(res)
 						setOutput(res);
 						setLoading(false);
 						if (res.status !== 'RUNNING') {
@@ -55,18 +64,65 @@ const CheckPipelineRun = ({options}: Props) => {
 	return (
 		<>
 			{output && <Box borderStyle="round" flexDirection="column">
-				<Text color={"cyan"}>Run id: <Text>{output.run_id}</Text></Text>
-				<Text color={"yellow"}>Run status: <Text>{output.status} </Text>{output.status === 'RUNNING' && <Text color={"green"}><Spinner type="dots" /></Text>}
+				<Text>
+					{output.map((run: any, i: number) => {
+						return (
+							<Text key={i}>
+								<Text color={"blue"}>Run id: {run.id}</Text>
+								<Newline/>
+								{run.status === "SUCCESSFUL" ?
+									<Text color={"green"}>Run status: {run.status}</Text> :
+									run.status === "RUNNING" ? <Text color={"yellow"}>Run status: {run.status}</Text> :
+										<Text color={"red"}>Run status: {run.status} </Text>
+								}
+								<Newline/>
+								<Text color={"yellow"}>Run initiated: <Text>{run.date_created} </Text></Text>
+
+								{options.showSteps &&
+									<Text>
+										<Newline/>
+										<Newline/>
+										<Text bold color={"cyan"}>Steps: </Text>
+										{
+											run.steps && Object.entries(run.steps).map((key0: any) => {
+												// return the key and the value
+												return (
+													<Text>
+													<Text key={i}>
+														{Object.entries(key0[1]).map((key1: any) => {
+															if (!["run_id", "user_id"].includes(key1[0])) {
+																return <Text key={i}>
+																	<Newline/>
+																	<Text color={"#FC6FCF"}>{key1[0]}: </Text><Text color={"#f5f5f5"}>{JSON.stringify(key1[1])} </Text>
+																</Text>
+															}
+															else {
+																return <></>
+															}
+														})}
+													</Text>
+														<Newline/>
+													</Text>
+												)
+											})
+										}
+									</Text>
+								}
+
+								{options.showConfig &&
+									<Text>
+										<Newline/>
+										<Newline/>
+										<Text color={"magenta"}>Pipeline name: <Text color={"magenta"}>{run.pipeline.name} </Text></Text>
+										<Newline/>
+										<Text color={"#f5f5f5"}>Pipeline config: <Newline/><Text>{run.pipeline.yaml_config} </Text></Text>
+									</Text>
+								}
+
+							</Text>
+						)
+					})}
 				</Text>
-				<Text color={"red"}>Run steps: {Object.values(output.steps).map((inner: any, i: number) => {
-					return <Text key={i}>
-						<Newline/>
-						<Text color={"blue"}>Name: </Text><Text color={"#f5f5f5"}>{inner.step_name} </Text>
-						<Text color={"blue"}>Success: </Text><Text color={"#f5f5f5"}>{JSON.stringify(inner.success)} </Text>
-						<Text color={"blue"}>Summary: </Text><Text color={"#f5f5f5"}>{JSON.stringify(inner.summary)} </Text>
-						<Text color={"blue"}>Error: </Text><Text color={"#f5f5f5"}>{JSON.stringify(inner.error_message)} </Text>
-				</Text>
-				})}</Text>
 			</Box>
 			}
 		</>

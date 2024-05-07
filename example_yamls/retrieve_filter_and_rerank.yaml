@@ -6,7 +6,7 @@ steps:
     step_args:
       query: When did the protagonist graduate from New Haven
       model_name: BAAI/bge-base-en-v1.5
-      vector_index_name: demo_vi
+      vector_index_name: rm_vi
       top_k: 100
       metadata_filters: { }
     depends_on: [ ]
