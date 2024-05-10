@@ -44,6 +44,7 @@ const PipelineList = ({options}: Props) => {
 		<>
 			{loading?<Text><Text color={"green"}><Spinner type="dots"/></Text>{` Loading`}</Text>:
 				<Box borderStyle="round" flexDirection="column">
+					{pipes.length === 0 && <Text>No pipelines found</Text>}
 					{
 						options.verbose ? pipes.map((pipe, i) => <><Text key={i}><Text color="yellow">Pipeline
 							Name:</Text><Text> {pipe.name}</Text><Newline/><Text color="green">Pipeline

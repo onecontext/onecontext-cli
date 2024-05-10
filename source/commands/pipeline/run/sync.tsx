@@ -25,6 +25,7 @@ export const options = zod.object({
 type Props = { options: zod.infer<typeof options> };
 
 const RunPipeline = ({options}: Props) => {
+	// TODO - handle if the pipeline name is incorrect and you 404
 	const [loading, setLoading] = useState<boolean>(true);
 	const [output, setOutput] = useState<any>([]);
 

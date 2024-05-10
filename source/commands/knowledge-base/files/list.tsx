@@ -3,17 +3,25 @@ import {render, Box, Text, Spacer, Newline} from 'ink';
 import Spinner from 'ink-spinner';
 import * as OneContext from 'onecontext';
 import * as zod from 'zod';
-import {Credentials} from '../../setup.js';
+import {Credentials} from '../../../setup.js';
 
 const {API_KEY, BASE_URL} = Credentials;
 export const options = zod.object({
 	BASE_URL: zod.string().default(BASE_URL),
 	API_KEY: zod.string().default(API_KEY),
-	knowledgeBaseName: zod.string().describe('Name of the knowledge base to list pipelines from')
+	knowledgeBaseName: zod.string().describe('Name of the knowledge base to list pipelines from'),
+	skip: zod.number().default(0).optional(),
+	limit: zod.number().default(10).optional(),
+	sort: zod.string().default("date_created").optional(),
+	dateCreatedGte: zod.date().default(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)).optional(),
+	dateCreatedLte: zod.date().default(new Date()).optional(),
+	metadataJson: zod.string().default("{}").describe('Metadata to filter the files').transform((metadata) => {
+		return JSON.parse(metadata)
+	})
 })
 
 type Props = {options: zod.infer<typeof options>};
-const ListFiles = ({options}: Props) => {
+const List = ({options}: Props) => {
 	const [files, setFiles] = useState(Array<{ name: string, status: string, metadata_json: Record<any,any> }>);
 	const [loading, setLoading] = useState(true);
 
@@ -52,5 +60,5 @@ const ListFiles = ({options}: Props) => {
 	)
 };
 
-export default ListFiles;
+export default List;
 

@@ -34,7 +34,6 @@ const CheckPipelineRun = ({options}: Props) => {
 			try {
 				OneContext.getRunResults(options)
 					.then(res => {
-						console.log(res)
 						setOutput(res);
 						setLoading(false);
 						if (res.status !== 'RUNNING') {
