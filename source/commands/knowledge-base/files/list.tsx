@@ -13,6 +13,7 @@ export const options = zod.object({
 	skip: zod.number().default(0).optional(),
 	limit: zod.number().default(10).optional(),
 	sort: zod.string().default("date_created").optional(),
+	nameStartsWith: zod.string().optional(),
 	dateCreatedGte: zod.date().default(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)).optional(),
 	dateCreatedLte: zod.date().default(new Date()).optional(),
 	metadataJson: zod.string().default("{}").describe('Metadata to filter the files').transform((metadata) => {
@@ -30,7 +31,14 @@ const List = ({options}: Props) => {
 			OneContext.listFiles(options)
 				.then(res => {
 					if (res) {
-						setFiles(res)
+						if (options.nameStartsWith) {
+							const startsWith = options.nameStartsWith;
+							// @ts-ignore
+							setFiles(res.filter((file: Record<string,string>) => file.name.startsWith(startsWith)));
+						}
+						else {
+							setFiles(res)
+						}
 						setLoading(false);
 					}
 				})
