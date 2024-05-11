@@ -86,7 +86,7 @@ const FileDelete = ({ options }: Props) => {
 	};
 
 	if (loading) {
-		return <Text color="green"><Spinner type="dots" /> Loading files...</Text>;
+		return <Text color="green"><Spinner type="dots" /> Deleting file...</Text>;
 	}
 
 	if (completed) {
