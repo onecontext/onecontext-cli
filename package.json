@@ -3,7 +3,9 @@
 	"version": "0.0.2",
 	"description": "Official CLI tool to interact with OneContext. 🚀.",
 	"license": "MIT",
-	"bin": "dist/cli.js",
+	"bin": {
+		"onecli": "dist/cli.js"
+	},
 	"type": "module",
 	"engines": {
 		"node": ">=16"
@@ -13,10 +15,14 @@
 		"dev": "tsc --watch",
 		"test": "prettier --check . && xo && ava"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"files": [
 		"dist"
 	],
 	"dependencies": {
+		"@onecontext/ts_sdk": "^0.0.1",
 		"dotenv": "^16.4.5",
 		"ink": "^4.1.0",
 		"ink-select-input": "^5.0.0",
