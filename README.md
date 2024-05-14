@@ -74,20 +74,36 @@ This will list your pipelines like so.
 
 <img width="524" alt="Screenshot 2024-05-14 at 21 07 59" src="https://github.com/onecontext/cli/assets/43931816/f6e59572-d9e9-49e7-93e3-817598b5e68b">
 
+Hint: pass a --verbose flag if you want to view the full yaml file for each pipeline.
+
 
 #### Create a new pipeline
 ```zsh
-onecli pipeline create --pipeline-name=index_pipeline --pipeline-yaml=example_yamls/index_pipeline.yaml
+onecli pipeline create --pipeline-name=index_pipeline --pipeline-yaml=example_yamls/index_pipeline.yaml && \
+onecli pipeline create --pipeline-name=retrieve_fast --pipeline-yaml=example_yamls/retriever_pipeline.yaml
 ```
-This will create a pipeline according to the specification in the provided yaml file.
+This command will create a pipeline according to the specification in the provided yaml file.
 
-Hint: pass a --verbose flag if you want to view the full yaml file for each pipeline.
 
 #### Delete a pipeline
 ```zsh
 onecli pipeline delete --pipeline-name=index_pipeline
 ```
 This will ask you for confirmation Yes / No before proceeding.
+
+#### Run a pipeline
+```zsh
+onecli pipeline run sync --pipeline-name=retriever_pipeline
+```
+
+#### Run a pipeline with overrides to certain fields
+```zsh
+onecli pipeline run sync --pipeline-name=retrieve_fast --override-args='{"retriever" : {"query" : "the difference between ipv4 and ipv6 and what it means for the internet", "top_k": 1}}'
+```
+As this is a retriever pipeline, it will return a list of chunks from the vector index. As we've set _top_k_ equal to 1, there will be just one chunk in the list.
+
+<img width="807" alt="image" src="https://github.com/onecontext/cli/assets/43931816/5028b59b-f914-4220-9615-d84ef4ad11f7">
+
 
 </details>
 
@@ -182,6 +198,7 @@ A file picker TUI will open, showing all files in the current directory. If you 
 ```zsh
 onecli knowledge-base files delete select --knowledge-base-name=rm_kb
 ```
+
 A file picker TUI will open, showing all files in the current knowledge base (on the server). If you select a file, it will ask you for confirmation Yes / No before deleting. If you delete it, all associated chunks and embeddings will also be deleted.
 
 
