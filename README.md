@@ -58,12 +58,13 @@ You can get one [here](https://onecontext.ai/settings)
 <details>
 <summary>Your base URL</summary>
 
+##### You can (probably) skip this steph
+The default base URL for the serverless platform is `https://api.onecontext.ai/v1/`. You'll only need to set a custom base URL if you are on the dedicated plan and have a custom domain. Users on the dedicated plan have a custom GPU cluster set up just for them on their subdomain.
+
 #### Run the below to set your base URL
 ```zsh
 onecli config set-base-url
 ```
-##### You can (probably) skip this steph
-The default base URL for the serverless platform is `https://api.onecontext.ai/v1/`. You'll only need to set a custom base URL if you are on the dedicated plan and have a custom domain. Users on the dedicated plan have a custom GPU cluster set up just for them on their subdomain.
 
 </details>
 
