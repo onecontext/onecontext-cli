@@ -18,6 +18,8 @@ npm install -g @onecontext/cli
 
 </details>
 
+<details>
+
 <summary>Get it from GitHub</summary>
 
 #### Clone this repo
