@@ -53,7 +53,7 @@ tsc && npm link
 ```
 Or, you can use the handy script already set up in the package.json of the TS SDK to do this automatically.
 ```zsh
-cd /path/to/your/TS-SDK-repo
+cd /path/to/your/TS-SDK-repo/
 npm run reload
 ```
 Under the hood, running this script runs this command:
