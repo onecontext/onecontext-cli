@@ -7,11 +7,14 @@ OneContext is a platform that enables software engineers to compose and deploy c
 ## Sounds cool. How do I get started?
 
 ### Install the tool
-
+<details>
+  <summary>Get it from npm (recommended)</summary>
+  ```zsh
+  npm install -g @onecontext/cli
+  ```
+</details>
 #### Get it from npm (recommended)
-```zsh
-npm install -g @onecontext/cli
-```
+
 
 #### Get it from GitHub (this repo)
 ##### Clone the repo
