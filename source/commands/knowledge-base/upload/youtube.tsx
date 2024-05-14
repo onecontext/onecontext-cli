@@ -4,7 +4,7 @@ import SelectInput from 'ink-select-input';
 import Spinner from 'ink-spinner';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as OneContext from 'onecontext'
+import * as OneContext from '@onecontext/ts_sdk'
 
 import {Credentials} from '../../../setup.js';
 import * as zod from "zod";

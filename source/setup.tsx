@@ -1,11 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as OneContext from 'onecontext'
 import * as dotenv from "dotenv";
 import { homedir } from 'os';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import React from "react";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

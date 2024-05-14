@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Text, render } from 'ink';
 import Spinner from 'ink-spinner';
 import SelectInput from 'ink-select-input';
-import * as OneContext from 'onecontext';
+import * as OneContext from '@onecontext/ts_sdk';
 import * as zod from 'zod';
 import { Credentials } from '../../setup.js';
 
