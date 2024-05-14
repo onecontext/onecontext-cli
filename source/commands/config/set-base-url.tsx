@@ -14,7 +14,7 @@ const BaseUrlCommand = () => {
 	};
 
 	const handleSubmit = () => {
-		const configDir = path.join(homedir(), '.one-cli');
+		const configDir = path.join(homedir(), '.onecli');
 		const configFile = path.join(configDir, 'base_url.txt');
 
 		// Ensure the directory exists

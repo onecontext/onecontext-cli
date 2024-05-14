@@ -18,7 +18,7 @@ const API_KEY: string | null = fs.existsSync(apiKeyFile) ? fs.readFileSync(apiKe
 const BASE_URL: string | null = fs.existsSync(baseUrlFile) ? fs.readFileSync(baseUrlFile, 'utf8') : "https://api.onecontext.ai/v1/";
 
 if (!API_KEY || API_KEY === "") {
-	throw new Error("API key not found. Please run `onecli config set-api-key`.");
+	console.log("API key not found. Please run `onecli config set-api-key`.");
 }
 
 export const Credentials: { API_KEY: string, BASE_URL: string } = {

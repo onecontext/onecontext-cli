@@ -14,7 +14,7 @@ const ApiKeyCommand = () => {
 	};
 
 	const handleSubmit = () => {
-		const configDir = path.join(homedir(), '.one-cli');
+		const configDir = path.join(homedir(), '.onecli');
 		const configFile = path.join(configDir, 'key.txt');
 
 		// Ensure the directory exists
