@@ -230,15 +230,14 @@ onecli pipeline run status
 ```zsh
 onecli pipeline run status --runid=24b554e89fc64e97955cf06e0e14dfc2
 ```
+<img width="807" alt="image" src="https://github.com/onecontext/cli/assets/43931816/d3328615-0aa4-4f13-9175-8f9f5bf18f4f">
 
-<img width="812" alt="image" src="https://github.com/onecontext/cli/assets/43931816/cf430dd6-a126-449c-9035-6c9765277437">
 
 ### Output the steps for a run
 ```zsh
 onecli pipeline run status --runid=24b554e89fc64e97955cf06e0e14dfc2 --show-steps
 ```
-
-<img width="811" alt="image" src="https://github.com/onecontext/cli/assets/43931816/f2a0ae25-95f0-471f-9f9f-87c43b6e9643">
+<img width="805" alt="image" src="https://github.com/onecontext/cli/assets/43931816/c864fb70-b9aa-4a9b-8bee-58c34a9a3fcc">
 
 Hint: omit the "runid" selector to show this output for _all_ runs on the account.
 
