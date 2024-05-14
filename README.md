@@ -71,6 +71,7 @@ For a quick overview though, please see below:
 onecli pipeline list
 ```
 This will list your pipelines like so.
+
 <img width="524" alt="Screenshot 2024-05-14 at 21 07 59" src="https://github.com/onecontext/cli/assets/43931816/f6e59572-d9e9-49e7-93e3-817598b5e68b">
 
 
@@ -124,6 +125,7 @@ Note, all the files, chunks, and embeddings connected to this Knowledge Base wil
 ```zsh 
 onecli vector-index list
 ```
+
 <img width="646" alt="image" src="https://github.com/onecontext/cli/assets/43931816/b39ae057-e78e-4434-8d81-9746a568de3e">
 
 
@@ -151,11 +153,21 @@ The source files will remain in the knowledge base.
 onecli knowledge-base files list --knowledge-base-name=rm_kb
 ```
 
+<img width="812" alt="image" src="https://github.com/onecontext/cli/assets/43931816/36add1ea-0221-4452-8e19-35df9b22199f">
+
+
 #### Upload a new file to a knowledge base
 ```zsh
-cd cli
-npm run build
+onecli knowledge-base upload file --knowledge-base-name=rm_kb
 ```
+A file picker TUI will open, showing all files in the current directory. If you select a file, it will upload the selected file to the knowledge base.
+
+<img width="808" alt="image" src="https://github.com/onecontext/cli/assets/43931816/24d0bcfb-4d4e-4407-82d5-57996df3c311">
+
+Confirmation will be shown like so:
+
+<img width="807" alt="image" src="https://github.com/onecontext/cli/assets/43931816/f245ea1b-1fab-4b97-929c-d45d89dae47c">
+
 
 #### Upload a new directory of files to a knowledge base
 ```zsh
@@ -168,9 +180,11 @@ A file picker TUI will open, showing all files in the current directory. If you 
 
 #### Delete a file from a knowledge base
 ```zsh
-cd cli
-npm run build
+onecli knowledge-base files delete select --knowledge-base-name=rm_kb
 ```
+A file picker TUI will open, showing all files in the current knowledge base (on the server). If you select a file, it will ask you for confirmation Yes / No before deleting. If you delete it, all associated chunks and embeddings will also be deleted.
+
+
 
 </details>
 
@@ -182,18 +196,21 @@ npm run build
 ```zsh 
 onecli pipeline run status
 ```
+
 <img width="809" alt="image" src="https://github.com/onecontext/cli/assets/43931816/a0d75d2c-66ac-4f85-bb14-9f2215438331">
 
 #### Show a particular run
 ```zsh
 onecli pipeline run status --runid=24b554e89fc64e97955cf06e0e14dfc2
 ```
+
 <img width="812" alt="image" src="https://github.com/onecontext/cli/assets/43931816/cf430dd6-a126-449c-9035-6c9765277437">
 
 #### Output the steps for a run
 ```zsh
 onecli pipeline run status --runid=24b554e89fc64e97955cf06e0e14dfc2 --show-steps
 ```
+
 <img width="811" alt="image" src="https://github.com/onecontext/cli/assets/43931816/f2a0ae25-95f0-471f-9f9f-87c43b6e9643">
 
 Hint: omit the "runid" selector to show this output for _all_ runs on the account.
@@ -203,6 +220,7 @@ Hint: omit the "runid" selector to show this output for _all_ runs on the accoun
 onecli pipeline run status --runid=24b554e89fc64e97955cf06e0e14dfc2 --show-config
 ```
 <img width="806" alt="image" src="https://github.com/onecontext/cli/assets/43931816/f99b99f8-b2dd-464d-9143-9a7cf9f4551b">
+
 Hint: omit the "runid" selector to show this output for _all_ runs on the account.
 
 ##### Filter the above by further parameters
@@ -214,13 +232,10 @@ If you have multiple runs, you can also further refine the output by passing fla
 ```date-created-lte``` to only show runs with a date less than or equal to the provided date.
 ```status``` to only show runs with a particular status (e.g. "RUNNING").
 
-For more execute the below command:
+For more information execute the below command:
 ```zsh
 onecli pipeline run status -h
 ```
-
-
-
 
 
 </details>
