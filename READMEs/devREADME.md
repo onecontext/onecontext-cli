@@ -29,7 +29,7 @@ npm run build
 
 ### Run the application
 ```zsh
-one-cli --help
+onecli --help
 ```
 
 ## Making changes to either the CLI or the TS SDK
@@ -41,7 +41,7 @@ npm run build
 ```
 You can then run the CLI again with:
 ```zsh
-one-cli --help
+onecli --help
 ```
 
 ### TS SDK
