@@ -179,8 +179,7 @@ The source files will remain in the knowledge base.
 ```zsh 
 onecli knowledge-base files list --knowledge-base-name=rm_kb
 ```
-
-<img width="812" alt="image" src="https://github.com/onecontext/cli/assets/43931816/36add1ea-0221-4452-8e19-35df9b22199f">
+<img width="810" alt="image" src="https://github.com/onecontext/cli/assets/43931816/c55daa5b-d32e-4668-89ae-e90df87f1300">
 
 
 ### Upload a new file to a knowledge base
@@ -189,7 +188,7 @@ onecli knowledge-base upload file --knowledge-base-name=rm_kb
 ```
 A file picker TUI will open, showing all files in the current directory. If you select a file, it will upload the selected file to the knowledge base.
 
-<img width="808" alt="image" src="https://github.com/onecontext/cli/assets/43931816/24d0bcfb-4d4e-4407-82d5-57996df3c311">
+<img width="804" alt="image" src="https://github.com/onecontext/cli/assets/43931816/9648fd42-3361-453f-ba14-7913d61844dc">
 
 Confirmation will be shown like so:
 
