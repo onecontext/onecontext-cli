@@ -263,7 +263,12 @@ onecli pipeline run status -h
 ### Ermahgerd it's not working
 Some troubleshooting tips:
 
-#### I don't have node installed
+
+<details>
+
+<summary>I don't have node installed</summary>
+
+#### Get it from the interweb
 ```zsh
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 ```
@@ -272,18 +277,38 @@ When that's done, run:
 sudo apt-get install -y nodejs=20.13.1-1nodesource1
 ```
 
-#### I don't have npm installed
+
+</details>
+
+<details>
+
+<summary>I don't have npm installed</summary>
+
+#### Get it via apt-get
 ```zsh
 sudo apt-get install npm
 ```
 
-#### I don't have git installed
+</details>
+
+<details>
+
+<summary>I don't have git installed</summary>
+
+#### Get it via apt-get
 ```zsh
 sudo apt-get install git
 ```
 
-#### I don't have permissions to make a directory
-Try adding sudo before the command. For example instead of:
+</details>
+
+
+<details>
+
+<summary>I don't have permission to make a directory</summary>
+
+#### Try it with sudo
+i.e. instead of:
 ```zsh
 npm install -g @onecontext/cli
 ```
@@ -292,8 +317,18 @@ try:
 sudo npm install -g @onecontext/cli
 ```
 
-#### I still have an issue
-##### Create an issue
-Please open an issue on this repo and we'll help you out.
-##### Email us
-[help](mailto:help@onecontext.ai)
+</details>
+
+<details>
+
+<summary>I still have an issue</summary>
+
+#### Create an issue in this repo
+We'll get back to you ASAP, or one of our helpful community will beat us to it.
+
+#### Email us
+Always happy to hear from our users! Please feel free to reach out. [help](mailto:help@onecontext.ai)
+
+</details>
+
+Thanks!
