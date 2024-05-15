@@ -86,7 +86,7 @@ const CheckPipelineRun = ({options}: Props) => {
 											run.steps && Object.entries(run.steps).map((key0: any) => {
 												// return the key and the value
 												return (
-													<Text>
+													<Text key={key0}>
 													<Text key={i}>
 														{Object.entries(key0[1]).map((key1: any) => {
 															if (!["run_id", "user_id"].includes(key1[0])) {
