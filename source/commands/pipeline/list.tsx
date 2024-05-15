@@ -48,8 +48,8 @@ const PipelineList = ({options}: Props) => {
 					{
 						options.verbose ? pipes.map((pipe, i) => <><Text key={i}><Text color="yellow">Pipeline
 							Name:</Text><Text> {pipe.name}</Text><Newline/><Text color="green">Pipeline
-							Yaml: </Text><Newline/><Text>{pipe.yaml_config}</Text></Text></>) : pipes.map((pipe, i) => <Text color={"blue"} key={i}>Pipeline Name: <Text
-							key={i} color={"#f5f5f5"}>{pipe.name}</Text></Text>)
+							Yaml: </Text><Newline/><Text>{pipe.yaml_config}</Text></Text></>) : pipes.map((pipe, i0) => <Text color={"blue"} key={i0}>Pipeline Name: <Text
+							color={"#f5f5f5"}>{pipe.name}</Text></Text>)
 					}
 				</Box>
 			}
