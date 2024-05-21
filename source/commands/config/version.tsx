@@ -8,8 +8,7 @@ import { homedir } from 'os';
 const OutputVersion = () => {
 	return (
 				<>
-					<Text>You are running onecli version number: </Text>
-					<Text color={"green"}>0.0.21</Text>
+					<Text>You are running onecli version number: <Text color={"green"}>0.0.22</Text></Text>
 				</>
 	);
 };
