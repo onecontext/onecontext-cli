@@ -1,6 +1,6 @@
 {
 	"name": "@onecontext/cli",
-	"version": "0.0.12",
+	"version": "0.0.13",
 	"description": "Official CLI tool to interact with OneContext. 🚀.",
 	"license": "MIT",
 	"bin": {
@@ -28,6 +28,7 @@
 		"ink-select-input": "^5.0.0",
 		"ink-spinner": "^5.0.0",
 		"ink-text-input": "^5.0.1",
+		"open": "^10.1.0",
 		"ora": "^8.0.1",
 		"pastel": "^2.0.0",
 		"react": "^18.2.0",
