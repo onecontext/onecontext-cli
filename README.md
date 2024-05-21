@@ -8,11 +8,11 @@ OneContext is a platform that enables software engineers to compose and deploy c
 
 ### Install the tool
 <details>
-  
+
 <summary>Get it from npm (recommended)</summary>
 
 #### Install globally using npm
-```zsh 
+```zsh
 npm install -g @onecontext/cli
 ```
 
@@ -23,7 +23,7 @@ npm install -g @onecontext/cli
 <summary>Get it from GitHub</summary>
 
 #### Clone this repo
-```zsh 
+```zsh
 git clone https://github.com/onecontext/cli.git
 ```
 #### Build it
@@ -53,6 +53,11 @@ onecli config set-api-key
 ##### Don't have an API key?
 You can get one [here](https://onecontext.ai/settings)
 
+Or, you can run the below command to open a browser session on the correct page:
+```zsh
+onecli config create-user
+```
+
 </details>
 
 <details>
@@ -78,7 +83,7 @@ For a quick overview though, please see below:
 <summary>Pipelines</summary>
 
 ### List your pipelines
-```zsh 
+```zsh
 onecli pipeline list
 ```
 This will list your pipelines like so.
@@ -122,7 +127,7 @@ As this is a retriever pipeline, it will return a list of chunks from the vector
 <summary>Knowledge Bases</summary>
 
 ### List your knowledge bases
-```zsh 
+```zsh
 onecli knowledge-base list
 ```
 
@@ -149,7 +154,7 @@ Note, all the files, chunks, and embeddings connected to this Knowledge Base wil
 <summary>Vector Indices</summary>
 
 ### List your vector indices
-```zsh 
+```zsh
 onecli vector-index list
 ```
 
@@ -176,7 +181,7 @@ The source files will remain in the knowledge base.
 <summary>Files</summary>
 
 ### List the files in a knowledge base
-```zsh 
+```zsh
 onecli knowledge-base files list --knowledge-base-name=rm_kb
 ```
 <img width="810" alt="image" src="https://github.com/onecontext/cli/assets/43931816/c55daa5b-d32e-4668-89ae-e90df87f1300">
@@ -220,7 +225,7 @@ A file picker TUI will open, showing all files in the current knowledge base (on
 <summary>Runs</summary>
 
 ### List the runs executed on your account
-```zsh 
+```zsh
 onecli pipeline run status
 ```
 
