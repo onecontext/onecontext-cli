@@ -250,8 +250,6 @@ Hint: omit the "runid" selector to show this output for _all_ runs on the accoun
 ```zsh
 onecli pipeline run status --runid=24b554e89fc64e97955cf06e0e14dfc2 --show-config
 ```
-<img width="806" alt="image" src="https://github.com/onecontext/cli/assets/43931816/f99b99f8-b2dd-464d-9143-9a7cf9f4551b">
-
 Hint: omit the "runid" selector to show this output for _all_ runs on the account.
 
 ### Filter the above by further parameters
