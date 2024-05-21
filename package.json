@@ -1,10 +1,11 @@
 {
 	"name": "@onecontext/cli",
-	"version": "0.0.18",
+	"version": "0.0.19",
 	"description": "Official CLI tool to interact with OneContext. 🚀.",
 	"license": "MIT",
 	"bin": {
-		"onecli": "dist/cli.js"
+		"onecli": "dist/cli.js",
+		"onecli --version": "dist/cli.js --version"
 	},
 	"type": "module",
 	"engines": {
