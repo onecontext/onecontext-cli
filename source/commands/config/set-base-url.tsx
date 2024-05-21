@@ -22,6 +22,11 @@ const BaseUrlCommand = () => {
 			fs.mkdirSync(configDir);
 		}
 
+		if (input.slice(-1) !== '/') {
+			console.log("Base URL should end with a '/', we modified your input for you.")
+			setInput(input + '/');
+		}
+
 		// Write the API key to the file
 		fs.writeFileSync(configFile, input);
 		setSubmitted(true);
