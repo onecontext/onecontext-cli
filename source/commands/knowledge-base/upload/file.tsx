@@ -3,7 +3,7 @@ import {render, Box, Text, Newline} from 'ink';
 import SelectInput from 'ink-select-input';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as OneContext from '@onecontext/ts_sdk'
+import * as OneContext from '@onecontext/ts-sdk'
 import Spinner from 'ink-spinner';
 
 import {Credentials} from '../../../setup.js';

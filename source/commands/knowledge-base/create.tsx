@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {render, Box, Text, Spacer, Newline} from 'ink';
 import Spinner from 'ink-spinner';
-import * as OneContext from '@onecontext/ts_sdk';
+import * as OneContext from '@onecontext/ts-sdk';
 import * as zod from 'zod';
 import {Credentials} from '../../setup.js';
-import fs from "fs";
 
 const {API_KEY, BASE_URL} = Credentials;
 

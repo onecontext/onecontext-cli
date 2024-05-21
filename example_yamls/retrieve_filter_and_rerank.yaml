@@ -9,7 +9,7 @@ steps:
       vector_index_name: rm_vi
       top_k: 100
       metadata_filters: { }
-    depends_on: [ ]
+    inputs: [ ]
 
   - step: FilterInMemory
     name: filter
@@ -17,7 +17,7 @@ steps:
       key: lexranker_file.percentile_score
       value: 0.5
       comparator: $gt
-    depends_on: [ retriever ]
+    inputs: [ retriever ]
 
   - step: Reranker
     name: reranker
@@ -26,4 +26,4 @@ steps:
       model_name: BAAI/bge-reranker-base
       top_k: 5
       metadata_filters: { }
-    depends_on: [ filter ]
+    inputs: [ filter ]

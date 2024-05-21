@@ -5,7 +5,7 @@ steps:
     step_args:
       knowledgebase_names: ["rm_kb"]
       vector_index_name: rm_vi
-    depends_on: []
+    inputs: []
 
   - step: Chunker
     name: simple_chunker
@@ -15,30 +15,30 @@ steps:
       split_by: word
       split_respect_sentence_boundary: true
       hard_split_max_chars: 2400
-    depends_on: [input]
+    inputs: [input]
 
   - step: SentenceTransformerEmbedder
     name: sentence-transformers
     step_args:
       model_name: BAAI/bge-base-en-v1.5
       include_metadata: [ title, file_name ]
-    depends_on: [ simple_chunker ]
+    inputs: [ simple_chunker ]
 
   - step: LexRank
     name: lexranker_file
     step_args:
       scope: file
-    depends_on: [ sentence-transformers ]
+    inputs: [ sentence-transformers ]
 
   - step: LouvainCommunityDetection
     name: louvain
     step_args:
       assign_labels: gpt-3.5-turbo # RateLimit later
-    depends_on: [ lexranker_file ]
+    inputs: [ lexranker_file ]
 
   - step: ChunkWriter
     name: save
     step_args:
 #      duplicates: overwrite on file_name
       vector_index_name: rm_vi
-    depends_on: [louvain]
+    inputs: [louvain]

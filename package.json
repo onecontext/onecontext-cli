@@ -22,7 +22,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@onecontext/ts_sdk": "^0.0.1",
+		"@onecontext/ts-sdk": "^1.0.0",
 		"dotenv": "^16.4.5",
 		"ink": "^4.1.0",
 		"ink-select-input": "^5.0.0",

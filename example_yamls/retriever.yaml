@@ -9,6 +9,6 @@ steps:
       vector_index_name: rm_vi
       top_k: 5
       metadata_filters: { }
-    depends_on: [ ]
+    inputs: [ ]
 
 

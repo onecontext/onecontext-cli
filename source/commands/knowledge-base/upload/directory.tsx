@@ -3,7 +3,7 @@ import {render, Box, Text} from 'ink';
 import SelectInput from 'ink-select-input';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as OneContext from '@onecontext/ts_sdk'
+import * as OneContext from '@onecontext/ts-sdk'
 
 import {Credentials} from '../../../setup.js';
 import * as zod from "zod";
@@ -19,6 +19,7 @@ export const options = zod.object({
 		return JSON.parse(metadata)
 	}).describe('Metadata to attach to the file')
 })
+
 
 type Props = { options: zod.infer<typeof options> };
 

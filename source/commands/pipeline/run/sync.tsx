@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {render, Box, Text, Spacer, Newline} from 'ink';
 import Spinner from 'ink-spinner';
-import * as OneContext from '@onecontext/ts_sdk';
+import * as OneContext from '@onecontext/ts-sdk';
 import * as zod from 'zod';
 import {Credentials} from '../../../setup.js';
 import fs from "fs";
@@ -28,6 +28,7 @@ const RunPipeline = ({options}: Props) => {
 	// TODO - handle if the pipeline name is incorrect and you 404
 	const [loading, setLoading] = useState<boolean>(true);
 	const [output, setOutput] = useState<any>([]);
+	// rename the overrideArgs key (if present) in the options to override_args
 
 	useEffect(() => {
 		try {
