@@ -1,6 +1,6 @@
 {
 	"name": "@onecontext/cli",
-	"version": "0.0.15",
+	"version": "0.0.16",
 	"description": "Official CLI tool to interact with OneContext. 🚀.",
 	"license": "MIT",
 	"bin": {
