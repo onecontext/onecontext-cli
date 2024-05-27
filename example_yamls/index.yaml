@@ -1,44 +1,46 @@
-name: basic_index
+name: demoIndexPipeline
 steps:
-  - step: KnowledgeBaseFiles
-    name: input
-    step_args:
-      knowledgebase_names: ["rm_kb"]
-      vector_index_name: rm_vi
-    inputs: []
+    - step: KnowledgeBaseFiles
+      name: input
+      step_args:
+          # specify the source knowledgebases to watch
+          knowledgebase_names: ["rm_kb"]
+      depends_on: []
 
-  - step: Chunker
-    name: simple_chunker
-    step_args:
-      chunk_size_words: 320
-      chunk_overlap: 30
-      split_by: word
-      split_respect_sentence_boundary: true
-      hard_split_max_chars: 2400
-    inputs: [input]
+    - step: Preprocessor
+      name: preprocessor
+      step_args: {}
+      inputs: [input]
 
-  - step: SentenceTransformerEmbedder
-    name: sentence-transformers
-    step_args:
-      model_name: BAAI/bge-base-en-v1.5
-      include_metadata: [ title, file_name ]
-    inputs: [ simple_chunker ]
+    - step: Chunker
+      name: simple_chunker
+      step_args:
+          chunk_size_words: 320
+          chunk_overlap: 30
+      inputs: [preprocessor]
 
-  - step: LexRank
-    name: lexranker_file
-    step_args:
-      scope: file
-    inputs: [ sentence-transformers ]
+    - step: SentenceTransformerEmbedder
+      name: sentence-transformers
+      step_args:
+          model_name: BAAI/bge-base-en-v1.5
+          include_metadata: [ title, file_name ]
+      inputs: [ simple_chunker ]
 
-  - step: LouvainCommunityDetection
-    name: louvain
-    step_args:
-      assign_labels: gpt-3.5-turbo # RateLimit later
-    inputs: [ lexranker_file ]
+    - step: LexRank
+      name: lexranker_file
+      step_args:
+          scope: file
+      inputs: [ sentence-transformers ]
 
-  - step: ChunkWriter
-    name: save
-    step_args:
-#      duplicates: overwrite on file_name
-      vector_index_name: rm_vi
-    inputs: [louvain]
+    - step: LouvainCommunityDetection
+      name: louvain
+      step_args:
+          assign_labels: gpt-3.5-turbo # RateLimit later
+      inputs: [ lexranker_file ]
+
+    - step: ChunkWriter
+      name: save
+      step_args:
+          #      duplicates: overwrite on file_name
+          vector_index_name: demoVectorIndex
+      inputs: [louvain]
