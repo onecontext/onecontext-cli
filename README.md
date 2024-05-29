@@ -75,7 +75,7 @@ onecli config set-base-url
 
 ## Now what?
 
-Now you can do (almost) everything the OneContext platform allows you to do, but from the command line, with a nice TUI. To go through the full gamut of what OneContext offers is beyond the scope of this README. For that, we'll direct you to https://docs.onecontext.ai !
+Now you can do (almost) everything the OneContext platform allows you to do, but from the command line, with a nice TUI.
 
 For a quick overview though, please see below:
 
