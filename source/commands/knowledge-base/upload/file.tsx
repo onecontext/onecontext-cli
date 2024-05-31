@@ -48,7 +48,7 @@ const FileUpload = ({options}: Props) => {
 			setDirectory(item.value);
 		} else {
 			setSelected(true)
-			const uploadFileArgs: OneContext.UploadFileType = {
+			const uploadFileArgs: OneContext.UploadFilesType = {
 				files: [{path: `${item?.value}`}],
 				metadataJson: options.metadataJson,
 				knowledgeBaseName: options.knowledgeBaseName,
@@ -56,7 +56,7 @@ const FileUpload = ({options}: Props) => {
 				API_KEY: options.API_KEY,
 				stream: false
 			}
-			OneContext.uploadFile(uploadFileArgs).then((res) => {
+			OneContext.uploadFiles(uploadFileArgs).then((res: any) => {
 				setRuns(res.data)
 				setCompleted(true)
 			})
