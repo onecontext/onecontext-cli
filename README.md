@@ -4,6 +4,9 @@ Use this CLI tool to manage your OneContext account.
 ## What is OneContext?
 OneContext is a platform that enables software engineers to compose and deploy custom RAG pipelines on SOTA infrastructure. You define the pipeline in YAML, and OneContext takes care of the rest of the infra (SSL certs, DNS, Kubernetes cluster, GPUs, autoscaling, load balancing, etc).
 
+## Where can I learn more?
+Check out our [docs](https://docs.onecontext.ai) for a in-depth treatment of how our platform works!
+
 ## Sounds cool. How do I get started?
 
 ### Install the tool
@@ -75,7 +78,7 @@ onecli config set-base-url
 
 ## Now what?
 
-Now you can do (almost) everything the OneContext platform allows you to do, but from the command line, with a nice TUI. To go through the full gamut of what OneContext offers is beyond the scope of this README. For that, we'll direct you to https://docs.onecontext.ai !
+Now you can do (almost) everything the OneContext platform allows you to do, but from the command line, with a nice TUI.
 
 For a quick overview though, please see below:
 
