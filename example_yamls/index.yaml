@@ -5,7 +5,7 @@ steps:
       step_args:
           # specify the source knowledgebases to watch
           knowledgebase_names: ["rm_kb"]
-      depends_on: []
+      inputs: []
 
     - step: Preprocessor
       name: preprocessor
@@ -42,5 +42,5 @@ steps:
       name: save
       step_args:
           #      duplicates: overwrite on file_name
-          vector_index_name: demoVectorIndex
+          vector_index_name: rm_vi
       inputs: [louvain]
