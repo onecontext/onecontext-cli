@@ -13,7 +13,7 @@ export const options = zod.object({
 	API_KEY: zod.string().default(API_KEY),
 	pipelineName: zod.string().describe('Name of the pipeline to create'),
 	pipelineYaml: zod.string().describe('Path to the yaml configuration of the pipeline to create. Relative to where you are running the cli from.').transform((path) => {
-		return fs.readFileSync(process.cwd() + "/" + path, 'utf8')
+		return process.cwd() + "/" + path
 	})
 })
 
