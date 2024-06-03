@@ -86,11 +86,11 @@ const CheckPipelineRun = ({options}: Props) => {
 											run.steps && Object.entries(run.steps).map((key0: any) => {
 												// return the key and the value
 												return (
-													<Text key={key0}>
-													<Text key={i}>
+													<Text key={key0+`a`}>
+													<Text key={i+`b`}>
 														{Object.entries(key0[1]).map((key1: any) => {
 															if (!["run_id", "user_id"].includes(key1[0])) {
-																return <Text key={i}>
+																return <Text key={i+`c`}>
 																	<Newline/>
 																	<Text color={"#FC6FCF"}>{key1[0]}: </Text><Text color={"#f5f5f5"}>{JSON.stringify(key1[1])} </Text>
 																</Text>
