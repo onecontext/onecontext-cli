@@ -1,5 +1,3 @@
-name: basic_query
-
 steps:
   - step: Retriever
     name: retriever
