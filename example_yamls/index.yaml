@@ -1,45 +1,33 @@
 steps:
-    - step: KnowledgeBaseFiles
-      name: input
-      step_args:
-          # specify the source knowledgebases to watch
-          knowledgebase_names: ["rm_kb"]
-      inputs: []
+  - step: KnowledgeBaseFiles
+    name: input
+    step_args:
+      # specify the source knowledgebases to watch
+      knowledgebase_names: ["demo_kb"]
+    inputs: []
 
-    - step: Preprocessor
-      name: preprocessor
-      step_args: {}
-      inputs: [input]
+  - step: Preprocessor
+    name: preprocessor
+    step_args: {}
+    inputs: [input]
 
-    - step: Chunker
-      name: simple_chunker
-      step_args:
-          chunk_size_words: 320
-          chunk_overlap: 30
-      inputs: [preprocessor]
+  - step: Chunker
+    name: simple_chunker
+    step_args:
+      chunk_size_words: 320
+      chunk_overlap: 30
+    inputs: [preprocessor]
 
-    - step: SentenceTransformerEmbedder
-      name: sentence-transformers
-      step_args:
-          model_name: BAAI/bge-base-en-v1.5
-          include_metadata: [ title, file_name ]
-      inputs: [ simple_chunker ]
+  - step: SentenceTransformerEmbedder
+    name: sentence-transformers
+    step_args:
+      model_name: BAAI/bge-base-en-v1.5
+      include_metadata: [ title, file_name ]
+    inputs: [ simple_chunker ]
 
-    - step: LexRank
-      name: lexranker_file
-      step_args:
-          scope: file
-      inputs: [ sentence-transformers ]
-
-    - step: LouvainCommunityDetection
-      name: louvain
-      step_args:
-          assign_labels: gpt-3.5-turbo # RateLimit later
-      inputs: [ lexranker_file ]
-
-    - step: ChunkWriter
-      name: save
-      step_args:
-          #      duplicates: overwrite on file_name
-          vector_index_name: rm_vi
-      inputs: [louvain]
+  - step: ChunkWriter
+    name: save
+    step_args:
+      #      duplicates: overwrite on file_name
+      vector_index_name: demo_vi
+    inputs: [sentence-transformers]

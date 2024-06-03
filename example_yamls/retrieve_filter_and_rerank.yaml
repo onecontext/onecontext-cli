@@ -4,18 +4,10 @@ steps:
     step_args:
       query: When did the protagonist graduate from New Haven
       model_name: BAAI/bge-base-en-v1.5
-      vector_index_name: rm_vi
+      vector_index_name: demo_vi
       top_k: 100
       metadata_filters: { }
     inputs: [ ]
-
-  - step: FilterInMemory
-    name: filter
-    step_args:
-      key: lexranker_file.percentile_score
-      value: 0.5
-      comparator: $gt
-    inputs: [ retriever ]
 
   - step: Reranker
     name: reranker
@@ -24,4 +16,4 @@ steps:
       model_name: BAAI/bge-reranker-base
       top_k: 5
       metadata_filters: { }
-    inputs: [ filter ]
+    inputs: [ retriever ]
