@@ -25,7 +25,7 @@ const CreateQuickstart = ({options}: Props) => {
 				.then(res => {
 					if (res) {
 						setLoading(false);
-						setText("Created vector index " + options.name+"_vi" + " with OpenAI model text-embedding-3-small.\n\n" +"Created knowledge base " + options.name+"_kb.\n\n"+"Created a query and an ingestion pipeline linking the knowledge base and the vector index".)
+						setText("Created vector index " + options.name + "_vi" + " with OpenAI model text-embedding-3-small.\n\n" + "Created knowledge base " + options.name + "_kb.\n\n" + "Created a query and an ingestion pipeline linking the knowledge base and the vector index")
 					} else {
 						setLoading(false)
 						setText("Failed to run quickstart")
