@@ -1,6 +1,6 @@
 {
 	"name": "@onecontext/cli",
-	"version": "0.0.28",
+	"version": "0.0.29",
 	"description": "Official CLI tool to interact with OneContext. 🚀.",
 	"license": "MIT",
 	"bin": {
@@ -22,7 +22,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@onecontext/ts-sdk": "1.0.12",
+		"@onecontext/ts-sdk": "1.0.13",
 		"commander": "^12.1.0",
 		"dotenv": "^16.4.5",
 		"ink": "^4.1.0",
