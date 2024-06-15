@@ -22,7 +22,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"@onecontext/ts-sdk": "1.0.13",
+		"@onecontext/ts-sdk": "1.0.14",
 		"commander": "^12.1.0",
 		"dotenv": "^16.4.5",
 		"ink": "^4.1.0",
