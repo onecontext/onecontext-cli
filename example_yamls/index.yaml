@@ -22,7 +22,6 @@ steps:
     name: sentence-transformers
     step_args:
       model_name: BAAI/bge-base-en-v1.5
-      include_metadata: [ title, file_name ]
     inputs: [ simple_chunker ]
 
   - step: ChunkWriter
