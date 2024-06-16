@@ -117,7 +117,7 @@ onecli pipeline run sync --pipeline-name=retriever_pipeline
 
 ### Run a pipeline with overrides to certain fields
 ```zsh
-onecli pipeline run sync --pipeline-name=retrieve_fast --override-args='{"retriever" : {"query" : "the difference between ipv4 and ipv6 and what it means for the internet", "top_k": 1}}'
+onecli pipeline run sync --pipeline-name=retrieve_fast --override-args='{"query_embedder":{"query": "the difference between ipv4 and ipv6"}, "retriever" : {"top_k": 1}}'
 ```
 As this is a retriever pipeline, it will return a list of chunks from the vector index. As we've set _top_k_ equal to 1, there will be just one chunk in the list.
 
