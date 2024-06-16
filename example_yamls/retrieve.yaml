@@ -3,6 +3,7 @@ steps:
     name: query_embedder
     step_args:
       query: "placeholder"
+      model_name: "BAAI/bge-base-en-v1.5"
     inputs: [ ]
 
   - step: Retriever
