@@ -39,7 +39,19 @@ const FileDelete = ({ options }: Props) => {
 
 	useEffect(() => {
 		setLoading(true);
-		OneContext.listFiles(options)
+		let listFilesArgs: OneContext.ListFilesType = {
+			knowledgeBaseNames: [options.knowledgeBaseName],
+			BASE_URL: options.BASE_URL,
+			API_KEY: options.API_KEY,
+			skip: options.skip,
+			limit: options.limit,
+			sort: options.sort,
+			dateCreatedGte: options.dateCreatedGte,
+			dateCreatedLte: options.dateCreatedLte,
+			metadataJson: options.metadataJson,
+		};
+
+		OneContext.listFiles(listFilesArgs)
 			.then(res => {
 				setLoading(false);
 				if (res && Array.isArray(res) && Array(res).length > 0) {
@@ -99,12 +111,12 @@ const FileDelete = ({ options }: Props) => {
 				<Box>
 					<Text>Are you sure you want to delete the file <Text color="red">{selectedFile.label}</Text>? This action is
 						irreversible. All of the associated chunks and embeddings with this file will be deleted. (Yes/No)</Text>
-					<SelectInput items={[{label: 'Yes', value: true}, {label: 'No', value: false}]} onSelect={handleConfirm}/>
+					<SelectInput items={[{ label: 'Yes', value: true }, { label: 'No', value: false }]} onSelect={handleConfirm} />
 				</Box>
 			);
 		} else {
 			if (!completed) {
-				return <Text color="green"><Spinner type="dots"/> Deleting file <Text
+				return <Text color="green"><Spinner type="dots" /> Deleting file <Text
 					color="red">{selectedFile.label}</Text></Text>;
 			} else {
 				return <Text>Deleted Successfully.</Text>;
@@ -113,7 +125,7 @@ const FileDelete = ({ options }: Props) => {
 	}
 
 	if (deleting) {
-			return <Text color="green"><Spinner type="dots"/> Deleting file</Text>;
+		return <Text color="green"><Spinner type="dots" /> Deleting file</Text>;
 	}
 
 	return (
