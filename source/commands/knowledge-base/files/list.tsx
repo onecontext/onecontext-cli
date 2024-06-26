@@ -9,7 +9,7 @@ const { API_KEY, BASE_URL } = Credentials;
 export const options = zod.object({
 	BASE_URL: zod.string().default(BASE_URL),
 	API_KEY: zod.string().default(API_KEY),
-	knowledgeBaseNames: zod.array(zod.string()).describe('List of names of the knowledge bases to list pipelines from'),
+	knowledgeBaseName: zod.string().describe('Names of the knowledge bases to list files from'),
 	skip: zod.number().default(0).optional(),
 	limit: zod.number().default(10).optional(),
 	sort: zod.string().default("date_created").optional(),
@@ -28,7 +28,19 @@ const List = ({ options }: Props) => {
 
 	useEffect(() => {
 		try {
-			OneContext.listFiles(options)
+			let listFilesArgs: OneContext.ListFilesType = {
+				knowledgeBaseNames: [options.knowledgeBaseName],
+				BASE_URL: options.BASE_URL,
+				API_KEY: options.API_KEY,
+				skip: options.skip,
+				limit: options.limit,
+				sort: options.sort,
+				dateCreatedGte: options.dateCreatedGte,
+				dateCreatedLte: options.dateCreatedLte,
+				metadataJson: options.metadataJson,
+			};
+
+			OneContext.listFiles(listFilesArgs)
 				.then(res => {
 					if (res) {
 						if (options.nameStartsWith) {
