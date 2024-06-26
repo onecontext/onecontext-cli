@@ -1,15 +1,15 @@
-import React, {useEffect, useState } from 'react';
-import {render, Box, Text, Spacer, Newline} from 'ink';
+import React, { useEffect, useState } from 'react';
+import { render, Box, Text, Spacer, Newline } from 'ink';
 import Spinner from 'ink-spinner';
 import * as OneContext from '@onecontext/ts-sdk';
 import * as zod from 'zod';
-import {Credentials} from '../../../setup.js';
+import { Credentials } from '../../../setup.js';
 
-const {API_KEY, BASE_URL} = Credentials;
+const { API_KEY, BASE_URL } = Credentials;
 export const options = zod.object({
 	BASE_URL: zod.string().default(BASE_URL),
 	API_KEY: zod.string().default(API_KEY),
-	knowledgeBaseName: zod.string().describe('Name of the knowledge base to list pipelines from'),
+	knowledgeBaseNames: zod.array(zod.string()).describe('List of names of the knowledge bases to list pipelines from'),
 	skip: zod.number().default(0).optional(),
 	limit: zod.number().default(10).optional(),
 	sort: zod.string().default("date_created").optional(),
@@ -21,9 +21,9 @@ export const options = zod.object({
 	})
 })
 
-type Props = {options: zod.infer<typeof options>};
-const List = ({options}: Props) => {
-	const [files, setFiles] = useState(Array<{ name: string, status: string, metadata_json: Record<any,any> }>);
+type Props = { options: zod.infer<typeof options> };
+const List = ({ options }: Props) => {
+	const [files, setFiles] = useState(Array<{ name: string, status: string, metadata_json: Record<any, any> }>);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -34,7 +34,7 @@ const List = ({options}: Props) => {
 						if (options.nameStartsWith) {
 							const startsWith = options.nameStartsWith;
 							// @ts-ignore
-							setFiles(res.filter((file: Record<string,string>) => file.name.startsWith(startsWith)));
+							setFiles(res.filter((file: Record<string, string>) => file.name.startsWith(startsWith)));
 						}
 						else {
 							setFiles(res)
@@ -56,11 +56,11 @@ const List = ({options}: Props) => {
 
 	return (
 		<>
-			{loading?<Text><Text color={"green"}><Spinner type="dots"/></Text>{` Loading`}</Text>:
+			{loading ? <Text><Text color={"green"}><Spinner type="dots" /></Text>{` Loading`}</Text> :
 				<Box borderStyle="round" flexDirection="column">
 					{
-						files.map((file, i) => <Text key={i}><Text key={i+"b"} color="yellow">File
-							Name:</Text><Text color={"#f5f5f5"} key={i+"a"}> {file.name}</Text></Text>)
+						files.map((file, i) => <Text key={i}><Text key={i + "b"} color="yellow">File
+							Name:</Text><Text color={"#f5f5f5"} key={i + "a"}> {file.name}</Text></Text>)
 					}
 				</Box>
 			}
